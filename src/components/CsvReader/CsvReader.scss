@@ -1,0 +1,39 @@
+.form {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+  margin: 10px;
+
+  &_fieldset {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+
+    border: 1px solid #bbbbbb;
+  }
+
+  &_legend {
+    display: inline-block;
+    width: max-content;
+    margin: 0;
+    padding: 0 5px;
+
+    font-size: 14px;
+    color: #a0a0a0;
+  }
+
+  &__input-file {
+    width: 200px;
+  }
+
+  &__input-file::-webkit-file-upload-button {
+    display: none;
+  }
+}
+
+.text-white {
+  text-align: center;
+
+  margin: 50px auto;
+  max-width: 500px;
+}
