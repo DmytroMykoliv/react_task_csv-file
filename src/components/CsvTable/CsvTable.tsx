@@ -14,7 +14,8 @@ export const CsvTable: React.FC<Props> = (props) => {
 
   const regexEmail = new RegExp(/^[\w-.]+@[\w-]+\.[a-z]{2,4}$/i);
   const regexPhone = new RegExp(/^[+][1]\d{10}$/);
-  const regexLicense = new RegExp(/^[0-9a-z]{6}$/);
+  const regexLicenseNumber = new RegExp(/^[0-9a-z]{6}$/);
+  const regexLicenseStates = new RegExp(/^[a-zA-Z\s|]+[a-zA-Z]$/);
 
   const findDuplicate = (forValidate: string, id: number) => {
     const getId: number[] = [];
@@ -96,7 +97,10 @@ export const CsvTable: React.FC<Props> = (props) => {
               <td>
                 {item['has children'] === 'TRUE' ? 'TRUE' : 'FALSE'}
               </td>
-              <td>
+              <td className={classNames({
+                'table_item--red': !regexLicenseStates.test(item['license states']),
+              })}
+              >
                 {item['license states']}
               </td>
               <td className={classNames({
@@ -106,7 +110,7 @@ export const CsvTable: React.FC<Props> = (props) => {
                 {item['expiration date']}
               </td>
               <td className={classNames({
-                'table_item--red': !regexLicense.test(item['license number']),
+                'table_item--red': !regexLicenseNumber.test(item['license number']),
               })}
               >
                 {item['license number']}
