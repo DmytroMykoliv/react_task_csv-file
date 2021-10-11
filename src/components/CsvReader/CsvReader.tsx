@@ -16,6 +16,8 @@ export const CsvReader: React.FC = () => {
     const csvRows = str.slice(str.indexOf('\n') + 1).split('\n')
       .map(item => item.trim());
 
+    setValidFile(csvHeaders.length === 10);
+
     const arrayData: Table[] = csvRows.map((row, index) => {
       const values = row.split(',');
       const getObject = csvHeaders.reduce((obj, key, i) => ({
