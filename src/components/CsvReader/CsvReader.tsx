@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { CsvTable } from '../CsvTable';
 import { csv } from '../../csv25_test_header';
 
@@ -64,6 +64,11 @@ export const CsvReader: React.FC = () => {
     }
   };
 
+  const importCurrentUsers = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    processingCsv(csv);
+  }, []);
+
   return (
     <div>
       <form className="form" id="csv-form">
@@ -102,10 +107,7 @@ export const CsvReader: React.FC = () => {
           <button
             type="submit"
             className="btn btn-info"
-            onClick={(event) => {
-              event.preventDefault();
-              processingCsv(csv);
-            }}
+            onClick={importCurrentUsers}
           >
             Import Users
           </button>

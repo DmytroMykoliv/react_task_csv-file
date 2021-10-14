@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import moment from 'moment';
+
+import {
+  regexLicenseNumber, regexLicenseStates, regexEmail, regexPhone,
+} from '../validations/Regex';
 
 import './CsvTable.scss';
 
@@ -12,12 +16,7 @@ type Props = {
 export const CsvTable: React.FC<Props> = (props) => {
   const { csvHeader, csvArrayData } = props;
 
-  const regexEmail = new RegExp(/^[\w-.]+@[\w-]+\.[a-z]{2,4}$/i);
-  const regexPhone = new RegExp(/^[+][1]\d{10}$/);
-  const regexLicenseNumber = new RegExp(/^[0-9a-z]{6}$/);
-  const regexLicenseStates = new RegExp(/^[a-zA-Z\s|]+[a-zA-Z]$/);
-
-  const findDuplicate = (forValidate: string, id: number) => {
+  const findDuplicate = useMemo(() => (forValidate: string, id: number) => {
     const getId: number[] = [];
 
     if (!Number.isNaN(+forValidate.slice(-1))) {
@@ -36,8 +35,8 @@ export const CsvTable: React.FC<Props> = (props) => {
       }
     });
 
-    return `${getId.join(', ')} `;
-  };
+    return `${getId.join(', ')}\n`;
+  }, []);
 
   return (
     <table className="table table-bordered">
