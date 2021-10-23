@@ -1,9 +1,4 @@
-# React TypeScript Starter Pack
+# React Load and Validate Csv File
+- [DEMO LINK](https://dmytromykoliv.github.io/react_task_csv-file/)
 
-To use this template click `Use this template`
-
-### Available Scripts
-
-`Deploy` - available to deploy your application to gh-pages
-
-`SCSS Preprocessor` - available to write your styles with modern style language
+- go to develop branch
